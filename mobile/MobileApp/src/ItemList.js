@@ -11,7 +11,7 @@ const ItemList = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://192.168.56.1:5000/items'); // Ganti dengan IP yang benar
+      const response = await axios.get('http://192.168.1.3:5000'); // Ganti dengan IP yang benar
       setItems(response.data);
     } catch (error) {
       console.error('Error fetching items', error);
