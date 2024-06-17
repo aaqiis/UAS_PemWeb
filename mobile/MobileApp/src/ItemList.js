@@ -43,11 +43,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
+    backgroundColor: '#FF69B4', // Warna pink
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#fff', // Warna teks menjadi putih
   },
   itemContainer: {
     padding: 10,
@@ -60,6 +62,7 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 16,
     marginBottom: 5,
+    color: '#333', // Warna teks menjadi gelap
   },
 });
 
