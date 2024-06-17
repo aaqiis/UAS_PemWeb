@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#FF69B4', // Warna pink
+    backgroundColor: '#FF69B4',
   },
 });
 
