@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import axios from 'axios';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import ItemList from './src/ItemList';
 
 const App = () => {
@@ -14,8 +13,9 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#FF69B4', // Warna pink
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
