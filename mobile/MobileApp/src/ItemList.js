@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
 import axios from 'axios';
 
 const ItemList = () => {
@@ -11,7 +11,7 @@ const ItemList = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://192.168.1.3:5000'); // Ganti dengan IP yang benar
+      const response = await axios.get('http://192.168.1.3:5000'); 
       setItems(response.data);
     } catch (error) {
       console.error('Error fetching items', error);
@@ -20,10 +20,12 @@ const ItemList = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
-      <Text style={styles.itemText}>Judul Berita: {item.judul_berita}</Text>
-      <Text style={styles.itemText}>Nama Kategori: {item.nama_kategori}</Text>
-      <Text style={styles.itemText}>Ringkasan: {item.ringkasan}</Text>
-      <Text style={styles.itemText}>Keywords: {item.keywords}</Text>
+      <View style={styles.itemTextContainer}>
+        <Text style={styles.itemTitle}>News Title: {item.judul_berita}</Text>
+        <Text style={styles.itemText}>Category Name: {item.jenis_berita}</Text>
+        <Text style={styles.itemText}>Summary: {item.ringkasan}</Text>
+        <Text style={styles.itemText}>Keywords: {item.keywords}</Text>
+      </View>
     </View>
   );
 
@@ -34,6 +36,7 @@ const ItemList = () => {
         data={items}
         renderItem={renderItem}
         keyExtractor={item => item.id_berita.toString()}
+        contentContainerStyle={styles.listContainer}
       />
     </View>
   );
@@ -42,27 +45,49 @@ const ItemList = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 5,
-    backgroundColor: '#FF69B4', // Warna pink
+    padding: 16,
+    backgroundColor: '#f0f0f0',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#fff', // Warna teks menjadi putih
+    marginBottom: 16,
+    color: '#333',
+  },
+  listContainer: {
+    paddingVertical: 8,
   },
   itemContainer: {
-    padding: 10,
+    flexDirection: 'row',
     backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 5,
-    marginBottom: 10,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+    marginVertical: 8,
+  },
+  itemImage: {
+    width: 120,
+    height: 120,
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
+  },
+  itemTextContainer: {
+    flex: 1,
+    padding: 16,
+  },
+  itemTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    color: '#333',
   },
   itemText: {
     fontSize: 16,
-    marginBottom: 5,
-    color: '#333', // Warna teks menjadi gelap
+    marginBottom: 4,
+    color: '#666',
   },
 });
 
